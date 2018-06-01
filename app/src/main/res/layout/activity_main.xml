@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/layout"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".MainActivity">
+
+	<ImageButton
+		android:id="@+id/imageButton_toggle1"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:src="@android:drawable/ic_input_add"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintLeft_toLeftOf="parent" />
+
+	<android.support.constraint.ConstraintLayout
+		android:id="@+id/viewGroup1"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:visibility="gone"
+		app:layout_constraintTop_toBottomOf="@+id/imageButton_toggle1"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent">
+
+		<EditText
+			android:id="@+id/editText1"
+			android:layout_width="0dp"
+			android:layout_height="80dp"
+			android:background="#eeeeee"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toLeftOf="@+id/button1" />
+
+		<Button
+			android:id="@+id/button1"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="ENTER"
+			app:layout_constraintBottom_toBottomOf="@id/editText1"
+			app:layout_constraintLeft_toRightOf="@+id/editText1"
+			app:layout_constraintRight_toRightOf="parent" />
+
+	</android.support.constraint.ConstraintLayout>
+
+	<ImageButton
+		android:id="@+id/imageButton_toggle2"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:src="@android:drawable/ic_input_add"
+		app:layout_constraintTop_toBottomOf="@+id/viewGroup1"
+		app:layout_constraintLeft_toLeftOf="parent" />
+
+	<android.support.constraint.ConstraintLayout
+		android:id="@+id/viewGroup2"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:visibility="gone"
+		app:layout_constraintTop_toBottomOf="@+id/imageButton_toggle2"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent">
+
+		<EditText
+			android:id="@+id/editText2"
+			android:layout_width="0dp"
+			android:layout_height="80dp"
+			android:background="#eeeeee"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toLeftOf="@+id/button2" />
+
+		<Button
+			android:id="@+id/button2"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="ENTER"
+			app:layout_constraintBottom_toBottomOf="@id/editText2"
+			app:layout_constraintLeft_toRightOf="@+id/editText2"
+			app:layout_constraintRight_toRightOf="parent" />
+
+	</android.support.constraint.ConstraintLayout>
+
+	<ImageButton
+		android:id="@+id/imageButton_toggle3"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:src="@android:drawable/ic_input_add"
+		app:layout_constraintTop_toBottomOf="@+id/viewGroup2"
+		app:layout_constraintLeft_toLeftOf="parent" />
+
+	<android.support.constraint.ConstraintLayout
+		android:id="@+id/viewGroup3"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:visibility="gone"
+		app:layout_constraintTop_toBottomOf="@+id/imageButton_toggle3"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent">
+
+		<EditText
+			android:id="@+id/editText3"
+			android:layout_width="0dp"
+			android:layout_height="80dp"
+			android:background="#eeeeee"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toLeftOf="@+id/button3" />
+
+		<Button
+			android:id="@+id/button3"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="ENTER"
+			app:layout_constraintBottom_toBottomOf="@id/editText3"
+			app:layout_constraintLeft_toRightOf="@+id/editText3"
+			app:layout_constraintRight_toRightOf="parent" />
+
+	</android.support.constraint.ConstraintLayout>
+
+
+
+</android.support.constraint.ConstraintLayout>
