@@ -9,14 +9,18 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity {
-	ConstraintLayout layout;
-	ImageButton imageButton_toggle1;
-	ImageButton imageButton_toggle2;
-	ImageButton imageButton_toggle3;
-	ViewGroup viewGroup1;
-	ViewGroup viewGroup2;
-	ViewGroup viewGroup3;
+	private ConstraintLayout layout;
+	private ImageButton imageButton_toggle1;
+	private ImageButton imageButton_toggle2;
+	private ImageButton imageButton_toggle3;
+	private ViewGroup viewGroup1;
+	private ViewGroup viewGroup2;
+	private ViewGroup viewGroup3;
+	private EditText editText_log;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -28,10 +32,22 @@ public class MainActivity extends AppCompatActivity {
 		viewGroup1 = findViewById(R.id.viewGroup1);
 		viewGroup2 = findViewById(R.id.viewGroup2);
 		viewGroup3 = findViewById(R.id.viewGroup3);
+		editText_log = findViewById(R.id.editText_log);
 		LayoutTransition layoutTransition = new LayoutTransition();
 		//layoutTransition.setStartDelay(LayoutTransition.CHANGE_APPEARING, 0);
 		//layoutTransition.setDuration(LayoutTransition.CHANGE_APPEARING, 1000);
 		//layoutTransition.setDuration(LayoutTransition.CHANGE_DISAPPEARING, 10);
+		layoutTransition.addTransitionListener(new LayoutTransition.TransitionListener() {
+			@Override
+			public void startTransition(LayoutTransition transition, ViewGroup container, View view, int transitionType) {
+				printf("startTransition(%s)\n", transitionTypeToName(transitionType));
+			}
+
+			@Override
+			public void endTransition(LayoutTransition transition, ViewGroup container, View view, int transitionType) {
+				printf("endTransition(%s)\n", transitionTypeToName(transitionType));
+			}
+		});
 		layout.setLayoutTransition(layoutTransition);
 		imageButton_toggle1.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -52,7 +68,9 @@ public class MainActivity extends AppCompatActivity {
 			}
 		});
 	}
-	private static void toggleVisilibity(ImageButton imageButton_toggle, ViewGroup viewGroup) {
+
+	private void toggleVisilibity(ImageButton imageButton_toggle, ViewGroup viewGroup) {
+		printf("----\n");
 		int visibility = viewGroup.getVisibility();
 		if (visibility == View.VISIBLE) {
 			imageButton_toggle.setImageResource(android.R.drawable.ic_input_add);
@@ -61,5 +79,22 @@ public class MainActivity extends AppCompatActivity {
 			imageButton_toggle.setImageResource(android.R.drawable.ic_delete);
 			viewGroup.setVisibility(View.VISIBLE);
 		}
+	}
+
+	public void printf(String format, Object... args) {
+		editText_log.append(String.format(format, args));
+		editText_log.setSelection(editText_log.getText().length());
+	}
+
+	static final Map<Integer, String> mapTransitionTypeToName = new HashMap<Integer, String>() {{
+		put(LayoutTransition.CHANGE_APPEARING, "CHANGE_APPEARING");
+		put(LayoutTransition.CHANGE_DISAPPEARING, "CHANGE_DIAPPEARING");
+		put(LayoutTransition.APPEARING, "APPEARING");
+		put(LayoutTransition.DISAPPEARING, "DISAPPEARING");
+		put(LayoutTransition.CHANGING, "CHANGING");
+	}};
+
+	static public String transitionTypeToName(int transitionType) {
+		return mapTransitionTypeToName.get(transitionType);
 	}
 }
